@@ -358,6 +358,31 @@ class Dillo {
            (cons (first list) (extract p? (rest list)))
            (extract p? (rest list)))))))
 
+; Alle Tiere einer Liste überfahren
+(: run-over-animals ((list-of animal) -> (list-of animal)))
+
+(check-expect (run-over-animals dillos1)
+              (cons (run-over-animal dillo1)
+                    (cons (run-over-animal dillo2)
+                          empty)))
+
+(define run-over-animals
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (cons (run-over-animal (first list))
+             (run-over-animals (rest list)))))))
+
+; Alle Zahlen einer Liste um 1 erhöhen
+(: list-inc ((list-of number) -> (list-of number)))
+
+(check-expect (list-inc (cons 1 (cons 2 (cons 3 empty))))
+              (cons 2 (cons 3 (cons 4 empty))))
+
+
+
+
 ; letztes Element einer Liste
 (: last ((cons-list-of number) -> number))
 
