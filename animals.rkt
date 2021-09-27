@@ -265,5 +265,8 @@ class Dillo {
   (first number)
   (rest list-of-numbers)) ; Selbstbezug
 
-
-  
+; 1elementige Liste: 17
+(define list1 (cons 17 empty))
+; 2elementige Liste: 5 17
+(define list2 (cons 5 (cons 17 empty)))
+; 3elementige Liste: 
