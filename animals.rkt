@@ -108,8 +108,11 @@
 ; Zustand des Gürteltiers zu einem bestimmten Zeitpunkt
 (define-record dillo
   make-dillo
+  dillo? ; Prädikat
   (dillo-alive? boolean)
   (dillo-weight number))
+
+(: dillo? (any -> boolean))
 
 ; Gürteltier, lebendig, 10kg
 (define dillo1 (make-dillo #t 10))
