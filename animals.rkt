@@ -97,3 +97,37 @@
 
 ; Signaturverletzung:
 ;(msm->time 20.5)
+
+;(msm->time -2)
+
+; Tiere auf dem texanischen Highway
+
+; Gürteltier hat folgende Eigenschaften: <-- zusammengesetzte Daten
+; - lebendig oder tot - UND -
+; - Gewicht
+; Zustand des Gürteltiers zu einem bestimmten Zeitpunkt
+(define-record dillo
+  make-dillo
+  (dillo-alive? boolean)
+  (dillo-weight number))
+
+; Gürteltier, lebendig, 10kg
+(define dillo1 (make-dillo #t 10))
+; totes Gürteltier, 9kg
+(define dillo2 (make-dillo #f 9))
+
+#|
+// repräsentiert das Gürteltier
+class Dillo {
+   boolean isAlive;
+   double weight;
+
+   void runOver() {
+     this.isAlive = false;
+   } 
+}
+|#
+
+; Gürteltier überfahren
+(: run-over-dillo (dillo -> dillo))
+
