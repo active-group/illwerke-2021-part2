@@ -4,6 +4,8 @@
 ; Language -> Add Teachpack -> image.rkt -> OK
 ; dann Run / Start oben rechts
 (define x
-  (+ 23 (* 12 14)))
+  (+ 23
+     (* 12
+        14)))
 
 
