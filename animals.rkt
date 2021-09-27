@@ -307,6 +307,8 @@ class Dillo {
        (* (first list)
           (list-product (rest list)))))))
 
+(: list-xxx (%b (%a %b -> %b) (list-of %a) -> %b))
+
 (define list-xxx
   (lambda (x f list)
     (cond
