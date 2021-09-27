@@ -147,6 +147,40 @@ class Dillo {
       (else ;(not (dillo-alive? dillo))
        (make-dillo #f (dillo-weight dillo))))))
 
+
+#;(cond
+    (<Bedingung1> <Antwort1>)
+    (<Bedingung2> <Antwort2>)
+    ...
+    (<Bedingungn> <Antwortn>))
+
+; =
+
+#;(if <Bedingung1>
+      <Antwort1>
+      (if <Bedingung2>
+          <Antwort2>
+          ...
+          (if <Bedingungn>
+              <Antwortn>
+              <Error>)))
+
+
+#;(if <Bedingung>
+      <Konsequente>
+      <Alternative>)
+
+; =
+#;(cond
+    (<Bedingung> <Konsequente>)
+    (else <Alternative>))
+
+#;(match <Expression>
+    (<Pattern1> <Antwort1>)
+    ...
+    (<Patternn> <Antwortn>))
+
+
 ; Papagei ...
 
 
@@ -157,3 +191,5 @@ class Dillo {
 
 ; lexikalische Bindung
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
+
+
