@@ -247,10 +247,11 @@ class Dillo {
 ; - die leere Liste
 ; - eine Cons-Liste aus erstem Element und Rest-Liste
 ;                                               ^^^^^ Selbstbezug
-(define list-of-numbers
-  (signature
-   (mixed empty-list
-          cons-list)))
+(define list-of
+  (lambda (element)
+    (signature
+     (mixed empty-list
+            (cons-list-of element)))))
 
 ; Die leere Liste besteht aus ... nix.
 (define-record empty-list
@@ -259,12 +260,14 @@ class Dillo {
 
 (define empty (make-empty))
 
-(define-record cons-list ; Signatur
+(define-record (cons-list-of element) ; Signatur
   cons ; Konstruktor
   cons? ; Prädikat
-  (first number)
-  (rest list-of-numbers)) ; Selbstbezug
+  (first element)
+  (rest (list-of element))) ; Selbstbezug
 
+(define list-of-numbers (signature (list-of number)))
+  
 ; (: cons (number list-of-numbers -> list-of-numbers))
 
 ; 1elementige Liste: 17
@@ -353,7 +356,7 @@ class Dillo {
            (extract p? (rest list)))))))
 
 ; letztes Element einer Liste
-(: last (cons-list -> number))
+(: last ((cons-list-of number) -> number))
 
 (check-expect (last (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 empty)))))))
               6)
