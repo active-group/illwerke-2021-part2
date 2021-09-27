@@ -307,6 +307,14 @@ class Dillo {
        (* (first list)
           (list-product (rest list)))))))
 
+(define list-xxx
+  (lambda (x f list)
+    (cond
+      ((empty? list) x)
+      ((cons? list)
+       (f (first list)
+          (list-xxx x f (rest list)))))))
+
 ; alle geraden Zahlen einer Liste extrahieren
 (: extract-evens (list-of-numbers -> list-of-numbers))
 
