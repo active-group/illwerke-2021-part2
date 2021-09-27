@@ -153,6 +153,7 @@ class Dillo {
 ; Ein Tier (auf dem texanischen Highway) ist eins der folgenden:
 ; - Gürteltier - ODER -
 ; - Papagei
+; Fallunterscheidung
 
 ; lexikalische Bindung
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
