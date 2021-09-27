@@ -72,4 +72,4 @@
 
 (: make-time (natural natural -> time))
 (: time-hour (time -> natural))
-(: time-hour (time -> natural))
+(: time-minute (time -> natural))
