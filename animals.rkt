@@ -309,6 +309,8 @@ class Dillo {
 
 (: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
 
+; entstanden aus der Schablone
+; Schablone entstanden aus der Datendefinition
 (define list-fold
   (lambda (x f list)
     (cond
