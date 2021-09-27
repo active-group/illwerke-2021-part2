@@ -20,4 +20,7 @@
   creek?
   (creek-origin string))
 
+(define eschach (make-creek "Heimliswald"))
+(define prim (make-creek "Dreifaltigkeitsberg"))
+
 
