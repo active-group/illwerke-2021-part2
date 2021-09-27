@@ -181,7 +181,9 @@ class Dillo {
     (<Patternn> <Antwortn>))
 
 
-; Papagei ...
+; Papagei hat folgende Eigenschaften:
+; - Satz
+; - Gewicht
 
 
 ; Ein Tier (auf dem texanischen Highway) ist eins der folgenden:
