@@ -29,7 +29,7 @@
     ...))
 
 ; Schablone
-(define cute?
+#;(define cute?
   (lambda (pet)
     ; pet ist eine Fallunterscheidung
     ; -> Verzweigung
@@ -38,3 +38,13 @@
       ((string=? pet "cat") ...)
       ((string=? pet "dog") ...)
       ((string=? pet "snake") ...))))
+
+(define cute?
+  (lambda (pet)
+    ; pet ist eine Fallunterscheidung
+    ; -> Verzweigung
+    ; Zweig: (<Bedingung> <Antwort>)
+    (cond
+      ((string=? pet "cat") #t)
+      ((string=? pet "dog") #t)
+      ((string=? pet "snake") #f))))
