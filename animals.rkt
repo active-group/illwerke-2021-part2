@@ -351,3 +351,19 @@ class Dillo {
        (if (p? (first list))
            (cons (first list) (extract p? (rest list)))
            (extract p? (rest list)))))))
+
+; letztes Element einer Liste
+(: last (cons-list -> number))
+
+(check-expect (last (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 empty)))))))
+              6)
+
+(define last
+  (lambda (list)
+    (cond
+      ((empty? (rest list))
+       (first list))
+      ((cons? (rest list))
+       (last (rest list))))))
+
+
