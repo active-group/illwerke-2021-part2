@@ -305,3 +305,33 @@ class Dillo {
           (list-product (rest list)))))))
 
 ; alle geraden Zahlen einer Liste extrahieren
+(: extract-evens (list-of-numbers -> list-of-numbers))
+
+(check-expect (extract-evens (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 empty)))))))
+              (cons 2 (cons 4 (cons 6 empty))))
+
+
+(define extract-evens
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (if (even? (first list))
+           (cons (first list) (extract-evens (rest list)))
+           (extract-evens (rest list)))))))
+
+; alle positiven Zahlen einer Liste extrahieren
+(: extract-positives (list-of-numbers -> list-of-numbers))
+
+(check-expect (extract-positives (cons 1 (cons -1 (cons 4 (cons -12 (cons 0 empty))))))
+              (cons 1 (cons 4 empty)))
+
+(define extract-positives
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (if (positive? (first list))
+           (cons (first list) (extract-positives (rest list)))
+           (extract-positives (rest list)))))))
+
