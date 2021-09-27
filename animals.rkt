@@ -84,3 +84,5 @@
   (lambda (time)
     (+ (* 60 (time-hour time))
        (time-minute time))))
+
+; Minuten seit Mitternacht zurück in Uhrzeit konvertieren
