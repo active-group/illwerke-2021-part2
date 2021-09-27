@@ -213,6 +213,8 @@ class Dillo {
 ; - Papagei
 ; Fallunterscheidung
 ; hier: gemischte Daten, Fallunterscheidung aus jeweils zusammengesetzten Daten
+(define animal
+  (signature (mixed dillo parrot)))
 
 
 ; lexikalische Bindung
