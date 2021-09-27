@@ -184,12 +184,36 @@ class Dillo {
 ; Papagei hat folgende Eigenschaften:
 ; - Satz
 ; - Gewicht
+(define-record parrot
+  make-parrot
+  (parrot-sentence string)
+  (parrot-weight number))
+
+; Begrüßungs-Papagei, 1kg
+(define parrot1 (make-parrot "Hello!" 1))
+; ... andersrum, dick:
+(define parrot2 (make-parrot "Goodbye!" 2))
+  
+; Papagei überfahren
+(: run-over-parrot (parrot -> parrot))
+
+(check-expect (run-over-parrot parrot1)
+              (make-parrot "" 1))
+
+
+(define run-over-parrot
+  (lambda (parrot)
+    (make-parrot ""
+                 (parrot-weight parrot))))
+
 
 
 ; Ein Tier (auf dem texanischen Highway) ist eins der folgenden:
 ; - Gürteltier - ODER -
 ; - Papagei
 ; Fallunterscheidung
+; hier: gemischte Daten, Fallunterscheidung aus jeweils zusammengesetzten Daten
+
 
 ; lexikalische Bindung
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
