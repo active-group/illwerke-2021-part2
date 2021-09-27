@@ -338,10 +338,13 @@ class Dillo {
            (cons (first list) (extract-positives (rest list)))
            (extract-positives (rest list)))))))
 
+(define dillos1 (cons dillo1 (cons dillo2 empty)))
+                 
 ; alle Elemente, die ein Kriterium erfüllen, aus einer Liste extrahieren
 ; Funktion höherer Ordnung
 ; Higher-Order Function
-(: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
+; %element: Signaturvariable
+(: extract ((%element -> boolean) (list-of %element) -> (list-of %element)))
 
 (check-expect (extract even? (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 empty)))))))
               (cons 2 (cons 4 (cons 6 empty))))
