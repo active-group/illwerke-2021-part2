@@ -146,3 +146,5 @@ class Dillo {
        (make-dillo #f (dillo-weight dillo)))
       (else ;(not (dillo-alive? dillo))
        (make-dillo #f (dillo-weight dillo))))))
+
+; lexikalische Bindung
