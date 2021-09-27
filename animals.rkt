@@ -390,7 +390,7 @@ class Dillo {
 
 (define inc (lambda (x) (+ 1 x)))
 
-(: list-map ((%element -> %element) (list-of %element) -> (list-of %element)))
+(: list-map ((%element -> %element2) (list-of %element) -> (list-of %element2)))
 
 (define list-map
   (lambda (f list)
