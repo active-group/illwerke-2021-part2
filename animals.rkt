@@ -303,3 +303,5 @@ class Dillo {
       ((cons? list)
        (* (first list)
           (list-product (rest list)))))))
+
+; alle geraden Zahlen einer Liste extrahieren
