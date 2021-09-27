@@ -44,7 +44,15 @@
 
 (define flows-from?
   (lambda (location river)
-    (match river
+    (cond
+      ((creek? river)
+       (string=? (creek-origin river) location))
+      ((confluence? river)
+       (or (string=? (confluence-location river) location)
+           (flows-from? location (confluence-main-stem river)) ; Selbstbezug
+           (flows-from? location (confluence-tributary river))))) ; Selbstbezug
+       
+    #;(match river
       ((make-creek origin)
        (string=? origin location))
       ((make-confluence clocation main-stem tributary)
