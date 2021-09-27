@@ -385,9 +385,10 @@ class Dillo {
     (cond
       ((empty? list) empty)
       ((cons? list)
-       (cons (+ 1 (first list))
+       (cons (inc (first list))
              (list-inc (rest list)))))))
 
+(define inc (lambda (x) (+ 1 x)))
 
 ; letztes Element einer Liste
 (: last ((cons-list-of number) -> number))
