@@ -216,6 +216,7 @@ class Dillo {
 (define animal
   (signature (mixed dillo parrot)))
 
+#|
 ; Tier überfahren
 (: run-over-animal (animal -> animal))
 
@@ -224,8 +225,13 @@ class Dillo {
 (check-expect (run-over-animal parrot1)
               (run-over-parrot parrot1))
 
+(define run-over-animal
+  (lambda (animal)
+    (cond
+      (... ...)
+      (... ...))))
 
-
+|#
 
 ; lexikalische Bindung
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
