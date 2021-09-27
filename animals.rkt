@@ -380,7 +380,13 @@ class Dillo {
 (check-expect (list-inc (cons 1 (cons 2 (cons 3 empty))))
               (cons 2 (cons 3 (cons 4 empty))))
 
-
+(define list-inc
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (cons (+ 1 (first list))
+             (list-inc (rest list)))))))
 
 
 ; letztes Element einer Liste
