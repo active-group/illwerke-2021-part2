@@ -21,6 +21,7 @@
 (: cute? (pet -> boolean))
 
 (check-expect (cute? "cat") #t)
+(check-expect (cute? "dog") #t)
 (check-expect (cute? "snake") #f)
 
 ; Gerüst
@@ -39,7 +40,7 @@
       ((string=? pet "dog") ...)
       ((string=? pet "snake") ...))))
 
-(define cute?
+#;(define cute?
   (lambda (pet)
     ; pet ist eine Fallunterscheidung
     ; -> Verzweigung
@@ -48,3 +49,11 @@
       ((string=? pet "cat") #t)
       ((string=? pet "dog") #t)
       ((string=? pet "snake") #f))))
+
+(define cute?
+  (lambda (pet)
+    ; pattern matching
+    (match pet
+      ("cat" #t)
+      ("dog" #t)
+      ("snake" #f))))
