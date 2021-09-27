@@ -94,3 +94,6 @@
   (lambda (minutes)
     (make-time (quotient minutes 60)
                (remainder minutes 60))))
+
+; Signaturverletzung:
+;(msm->time 20.5)
