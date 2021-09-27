@@ -220,7 +220,6 @@ class Dillo {
 (define animal
   (signature (mixed dillo parrot)))
 
-#|
 ; Tier überfahren
 (: run-over-animal (animal -> animal))
 
@@ -231,11 +230,14 @@ class Dillo {
 
 (define run-over-animal
   (lambda (animal)
-    (cond
-      (... ...)
-      (... ...))))
-
-|#
+    (match animal
+      ((make-dillo alive? weight) (make-dillo #f weight))
+       ;           ^^^^^^ ^^^^^^ frei wählbar
+      ((make-parrot sentence weight) (make-parrot "" weight)))
+        
+    #;(cond
+      ((dillo? animal) (run-over-dillo animal))
+      ((parrot? animal) (run-over-parrot animal)))))
 
 ; lexikalische Bindung
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
