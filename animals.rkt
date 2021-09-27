@@ -57,3 +57,8 @@
       ("cat" #t)
       ("dog" #t)
       ("snake" #f))))
+
+; Uhrzeit besteht aus: / hat folgende Eigenschaften:
+; - Stunde - UND -
+; - Minute
+; zusammengesetzte Daten
