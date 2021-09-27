@@ -285,7 +285,7 @@ class Dillo {
 (define list-sum
   (lambda (list)
     (cond
-      ((empty? list) 0)
+      ((empty? list) 0) ; "additive Einheit", "neutrales Element der Addition"
       ((cons? list)
        (+ (first list)
           (list-sum (rest list)))))))
@@ -299,7 +299,7 @@ class Dillo {
 (define list-product
   (lambda (list)
     (cond
-      ((empty? list) 1)
+      ((empty? list) 1) ; "multiplikative Einheit", "neutrales Element der Multiplikation"
       ((cons? list)
        (* (first list)
           (list-product (rest list)))))))
