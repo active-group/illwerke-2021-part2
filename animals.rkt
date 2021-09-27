@@ -336,7 +336,12 @@ class Dillo {
            (extract-positives (rest list)))))))
 
 ; alle Elemente, die ein Kriterium erfüllen, aus einer Liste extrahieren
+; Funktion höherer Ordnung
+; Higher-Order Function
 (: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
+
+(check-expect (extract even? (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 empty)))))))
+              (cons 2 (cons 4 (cons 6 empty))))
 
 (define extract
   (lambda (p? list)
