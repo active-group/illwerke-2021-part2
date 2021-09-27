@@ -243,3 +243,21 @@ class Dillo {
 ; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
 
 
+; Eine Liste ist eins der folgenden:
+; - die leere Liste
+; - eine Cons-Liste aus erstem Element und Rest-Liste
+;                                               ^^^^^ Selbstbezug
+(define list-of-numbers
+  (signature
+   (mixed empty-list
+          cons-list)))
+
+; Die leere Liste besteht aus ... nix.
+(define-record empty-list
+  make-empty
+  empty?)
+
+(define empty (make-empty))
+
+
+  
