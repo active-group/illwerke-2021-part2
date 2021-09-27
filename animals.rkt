@@ -259,14 +259,36 @@ class Dillo {
 
 (define empty (make-empty))
 
-(define-record cons-list
-  cons
-  cons?
+(define-record cons-list ; Signatur
+  cons ; Konstruktor
+  cons? ; Prädikat
   (first number)
   (rest list-of-numbers)) ; Selbstbezug
+
+; (: cons (number list-of-numbers -> list-of-numbers))
 
 ; 1elementige Liste: 17
 (define list1 (cons 17 empty))
 ; 2elementige Liste: 5 17
 (define list2 (cons 5 (cons 17 empty)))
-; 3elementige Liste: 
+; 3elementige Liste 12 17 3:
+(define list3 (cons 12 (cons 17 (cons 3 empty))))
+; 4elementige Liste: 5 12 17 3:
+(define list4 (cons 5 list3))
+
+; Elemente einer Liste aufsummieren
+(: list-sum (list-of-numbers -> number))
+
+(check-expect (list-sum list3)
+              32)
+
+(define list-sum
+  (lambda (list)
+    (cond
+      (cond
+        ((empty? list) ...)
+        ((cons? list)
+         ...
+         (first list)
+         (list-sum (rest list))
+         ...)))))
