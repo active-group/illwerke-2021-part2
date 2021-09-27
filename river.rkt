@@ -23,4 +23,9 @@
 (define eschach (make-creek "Heimliswald"))
 (define prim (make-creek "Dreifaltigkeitsberg"))
 
-
+(define-record confluence
+  make-confluence
+  confluence?
+  (confluence-location string)
+  (confluence-main-stem river) ; Selbstbezug
+  (confluence-tributary river)) ; Selbstbezug
