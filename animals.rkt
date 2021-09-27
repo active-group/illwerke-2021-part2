@@ -259,5 +259,11 @@ class Dillo {
 
 (define empty (make-empty))
 
+(define-record cons-list
+  cons
+  cons?
+  (first number)
+  (rest list-of-numbers)) ; Selbstbezug
+
 
   
