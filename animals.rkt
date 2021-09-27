@@ -340,7 +340,7 @@ class Dillo {
 
 (define dillos1 (cons dillo1 (cons dillo2 empty)))
                  
-; alle Elemente, die ein Kriterium erfüllen, aus einer Liste extrahieren
+; alle Elemente, die ein Kriterium erfüllen, aus einer Liste extrahieren ("filter")
 ; Funktion höherer Ordnung
 ; Higher-Order Function
 ; %element: Signaturvariable
