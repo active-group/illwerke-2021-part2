@@ -335,3 +335,14 @@ class Dillo {
            (cons (first list) (extract-positives (rest list)))
            (extract-positives (rest list)))))))
 
+; alle Elemente, die ein Kriterium erfüllen, aus einer Liste extrahieren
+(: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
+
+(define extract
+  (lambda (p? list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (if (p? (first list))
+           (cons (first list) (extract p? (rest list)))
+           (extract p? (rest list)))))))
