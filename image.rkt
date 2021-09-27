@@ -35,6 +35,32 @@
 
 (tile square1 circle1)
 
+#|
+class Image {
+
+  static Image tile(Image image1, Image image2) {
+    ...
+  }
+
+  static int m(int x) {
+    ...
+    x
+    ...
+    x = 23;
+    x
+    ...
+  }
+
+}
+
+... Image.m(17) ...
+
+hier / FP: Variable steht für einen Wert
+C#: Variable steht für eine Speicherzelle, die für einen Wert steht
+
+
+|#
+
 
 
 
