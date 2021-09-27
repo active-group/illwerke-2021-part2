@@ -69,3 +69,7 @@
 
 (define time1 (make-time 12 24))
 (define time2 (make-time 16 05))
+
+(: make-time (natural natural -> time))
+(: time-hour (time -> natural))
+(: time-hour (time -> natural))
