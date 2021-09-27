@@ -147,4 +147,12 @@ class Dillo {
       (else ;(not (dillo-alive? dillo))
        (make-dillo #f (dillo-weight dillo))))))
 
+; Papagei ...
+
+
+; Ein Tier (auf dem texanischen Highway) ist eins der folgenden:
+; - Gürteltier - ODER -
+; - Papagei
+
 ; lexikalische Bindung
+; innen -> außen: erstmal nach lambda, dann define, dann eingebaut
