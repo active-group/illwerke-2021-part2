@@ -62,3 +62,10 @@
 ; - Stunde - UND -
 ; - Minute
 ; zusammengesetzte Daten
+(define-record time ; Signatur
+  make-time ; Konstruktor
+  (time-hour natural)
+  (time-minute natural))
+
+(define time1 (make-time 12 24))
+(define time2 (make-time 16 05))
