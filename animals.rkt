@@ -285,10 +285,21 @@ class Dillo {
 (define list-sum
   (lambda (list)
     (cond
-      (cond
-        ((empty? list) ...)
-        ((cons? list)
-         ...
-         (first list)
-         (list-sum (rest list))
-         ...)))))
+      ((empty? list) 0)
+      ((cons? list)
+       (+ (first list)
+          (list-sum (rest list)))))))
+
+; Elemente einer Liste aufmultiplizieren
+(: list-product (list-of-numbers -> number))
+
+(check-expect (list-product list3)
+              612)
+
+(define list-product
+  (lambda (list)
+    (cond
+      ((empty? list) 1)
+      ((cons? list)
+       (* (first list)
+          (list-product (rest list)))))))
