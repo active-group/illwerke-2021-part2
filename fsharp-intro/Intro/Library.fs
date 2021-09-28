@@ -143,6 +143,7 @@ module Code =
   let list3: list<int> = 1 :: 2 :: 3 :: []
   let list3' = [1; 2; 3]
 
+  // listSum [1;2;3] = 1 + (2 + (3 + 0))
   let rec listSum (list: list<int>): int =
     match list with
     | [] -> 0
@@ -150,6 +151,7 @@ module Code =
     | (first::rest) -> first + listSum rest
 
   // acc: Summe der bisher schon gesehenen Elemente
+  // listSum1 [1;2;3] 0 = ((0 + 1) + 2) + 3
   let rec listSum1 (list: list<int>) (acc: int): int =
     match list with
     // alle Elemente schon gesehen:
@@ -161,6 +163,9 @@ module Code =
     | [] -> [element]
     // Kontext des rekursiven Aufrufs: first :: LOCH
     | (first::rest) -> first :: appendToEnd rest element
+
+  let listFold x f list =
+    
 
   let rec rev (list: list<'a>): list<'a> =
     match list with
