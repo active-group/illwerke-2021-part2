@@ -133,7 +133,10 @@ module Code =
   type List<'a> =
   | Empty
   | Cons of ('a * List<'a>)
-
+ 
+  // F#:
+  // - leere Liste: []
+  // - Cons: ::, Infix
 
 
 module Say =
