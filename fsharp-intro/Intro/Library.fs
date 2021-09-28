@@ -208,12 +208,13 @@ module Code =
    // List.foldBack: listFold
 
 
-   let rec find (pred: 'a -> bool) (list: list<'a>): 'a =
+  // type option<'a> = None | Some of 'a
+  let rec find (pred: 'a -> bool) (list: list<'a>): option<'a> =
      match list with
-     | [] -> failwith "element not found"
+     | [] -> None
      | (first::rest) ->
         if pred first
-        then first
+        then Some first
         else find pred rest
 
 
