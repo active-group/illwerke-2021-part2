@@ -247,6 +247,7 @@ module Contracts =
   | One of Currency
   | Multiple of double * Contract
   | Later of Date * Contract
+  | Direction of Direction * Contract
 
   // Ich bekomme 100€ jetzt.
   let contract1 = Multiple (100.0, One EUR) 
