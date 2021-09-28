@@ -244,7 +244,7 @@ module Contracts =
   type Direction = Long | Short
 
   type Contract =
-  | Zero
+  | Zero  // neutrales Element
   | One of Currency
   | Multiple of double * Contract
   | Later of Date * Contract
