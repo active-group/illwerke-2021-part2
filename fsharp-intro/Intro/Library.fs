@@ -208,6 +208,15 @@ module Code =
    // List.foldBack: listFold
 
 
+   let rec find (pred: 'a -> bool) (list: list<'a>): 'a =
+     match list with
+     | [] ->
+     | (first::rest) ->
+        if pred first
+        then first
+        else find pred rest
+
+
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
   // appendToEnd: 1 rekursiver Aufruf pro Cons / pro Listenelement
