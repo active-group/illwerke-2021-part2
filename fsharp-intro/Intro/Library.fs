@@ -239,8 +239,10 @@ module Contracts =
   type Contract =
   | One of Currency
   | Multiple of double * Contract
+  | Later of Date * Contract
 
-  let contract1 = Multiple (100.0, One EUR)
+  // Ich bekomme 100€ jetzt.
+  let contract1 = Multiple (100.0, One EUR) 
 
   // Multiple 1.0 EUR = One EUR
 
