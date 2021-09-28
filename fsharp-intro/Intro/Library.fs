@@ -204,6 +204,9 @@ module Code =
     | [] -> acc
     | (first :: rest) -> listFoldLeft rest (f first acc) f
 
+   // List.fold: listFoldLeft
+   // List.foldBack: listFold
+
 
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
