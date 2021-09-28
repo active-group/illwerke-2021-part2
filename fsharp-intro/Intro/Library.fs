@@ -35,6 +35,8 @@ module Code =
   // Ein Tier ist eins der folgenden:
   // - Gürteltier
   // - Papagei
+  // algebraischer Datentyp
+  // discriminated union
   type Animal =
     | Dillo of Liveness * double
     | Parrot of string * double
