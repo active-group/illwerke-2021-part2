@@ -58,7 +58,7 @@ module Code =
     | Parrot (_, weight) -> Parrot ("", weight)
 
   // Weight -> (Animal -> Animal)
-  let feedAnimal  (amount: Weight) (animal: Animal): Animal =
+  let feedAnimal (animal: Animal) (amount: Weight): Animal =
     match animal with
 //    | Dillo (liveness, weight) ->
 //        match liveness with
@@ -68,6 +68,9 @@ module Code =
     | Dillo (Dead, _) -> animal
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
+
+  // ('a -> 'b -> 'c) -> ('b -> 'a -> 'c)
+  let flip f b a = f a b
 
   let feedAnimal' (amount: Weight, animal: Animal): Animal =
     match animal with
