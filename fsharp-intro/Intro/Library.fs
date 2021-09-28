@@ -158,12 +158,12 @@ module Code =
     | [] -> [] 
     | (first::rest) -> appendToEnd (rev rest) first
 
-  let rec rev' (list0: list<'a>): list<'a> =
+  let rev' (list0: list<'a>): list<'a> =
       let rec rev1 (list: list<'a>) (acc: list<'a>): list<'a> =
         match list with
         | [] -> acc 
         | (first::rest) -> rev1 rest (first::acc)
-      rev1 list0 acc
+      rev1 list0 []
 
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
