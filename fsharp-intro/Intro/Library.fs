@@ -15,7 +15,9 @@ module Code =
   // type Time = { Hour: int; Minute: int }
   type Time = { Hour: int 
                 Minute: int }
-                
+
+  let time1 = 
+
 module Say =
     let hello name =
         printfn "Hello %s" name
