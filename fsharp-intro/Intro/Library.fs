@@ -241,7 +241,7 @@ module Contracts =
 
   type Currency = EUR | GBP | CHF
 
-  type Direction = Long | Short
+  type Direction = Long | Short
 
   type Contract =
   | One of Currency
