@@ -64,6 +64,7 @@ module Code =
 //        | Dead -> animal
 //        | Alive -> Dillo (liveness, weight + amount)
     | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
+    | Dillo (Dead, weight) -> animal
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
