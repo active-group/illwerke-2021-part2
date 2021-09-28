@@ -150,13 +150,6 @@ module Code =
     // Kontext des rekursiven Aufrufs: first + LOCH
     | (first::rest) -> first + listSum rest
 
-  // acc: Summe der bisher schon gesehenen Elemente
-  // listSum1 [1;2;3] 0 = ((0 + 1) + 2) + 3
-  let rec listSum1 (list: list<int>) (acc: int): int =
-    match list with
-    // alle Elemente schon gesehen:
-    | [] -> acc
-    | (first :: rest) -> listSum1 rest (first + acc)  
 
   let rec appendToEnd (list: list<'a>) (element: 'a): list<'a> =
     match list with
@@ -196,6 +189,21 @@ module Code =
         // endrekursiver Aufruf
         | (first::rest) -> rev1 rest (first::acc)
       rev1 list0 []
+
+  // acc: Summe der bisher schon gesehenen Elemente
+  // listSum1 [1;2;3] 0 = ((0 + 1) + 2) + 3
+  let rec listSum1 (list: list<int>) (acc: int): int =
+    match list with
+    // alle Elemente schon gesehen:
+    | [] -> acc
+    | (first :: rest) -> listSum1 rest (first + acc)  
+
+  let rec listFoldLeft (list: list<int>) (acc: int) f: int =
+    match list with
+    // alle Elemente schon gesehen:
+    | [] -> acc
+    | (first :: rest) -> listFoldLeft rest (f first acc)  
+
 
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
