@@ -249,6 +249,10 @@ module Contracts =
   | Later of Date * Contract
   | Direction of Direction * Contract
 
+
+  // Was ist denn das hier:
+  let c''' = Direction (Long, Direction (Short, Direction (Short, One EUR )))
+
   // Ich bekomme 100€ jetzt.
   let contract1 = Multiple (100.0, One EUR) 
   let zcb1 = Later ("2021-12-24", Multiple (100.0, One EUR))
