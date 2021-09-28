@@ -217,7 +217,8 @@ module Code =
         then Some first
         else find pred rest
 
-
+module Contracts =
+  
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
   // appendToEnd: 1 rekursiver Aufruf pro Cons / pro Listenelement
