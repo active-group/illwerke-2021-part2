@@ -146,16 +146,19 @@ module Code =
   let rec listSum (list: list<int>): int =
     match list with
     | [] -> 0
+    // Kontext des rekursiven Aufrufs: first + LOCH
     | (first::rest) -> first + listSum rest
 
   let rec appendToEnd (list: list<'a>) (element: 'a): list<'a> =
     match list with
     | [] -> [element]
+    // Kontext des rekursiven Aufrufs: first :: LOCH
     | (first::rest) -> first :: appendToEnd rest element
 
   let rec rev (list: list<'a>): list<'a> =
     match list with
     | [] -> [] 
+    // Kontext: appendToEnd LOCH first
     | (first::rest) -> appendToEnd (rev rest) first
 
   let rev' (list0: list<'a>): list<'a> =
