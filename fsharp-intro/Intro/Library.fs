@@ -27,7 +27,11 @@ module Code =
     time.Hour * 60 + time.Minute
 
   // Variante
-  let msm' ({ Hour = h; })
+  let msm' ({ Hour = h; Minute = m}): int =
+    h * 60 + m
+
+
+  
 
 module Say =
     let hello name =
