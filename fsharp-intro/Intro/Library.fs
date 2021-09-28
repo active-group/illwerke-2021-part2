@@ -76,6 +76,13 @@ module Code =
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
+  // Eine geometrische Figur ("shape") ist eins der folgenden:
+  // - ein Kreis
+  // - ein Quadrat
+  // - eine Überlagerung zweier geometrischer Figuren
+  // 1. Datenanalyse
+  // 2. Funktion: Ist ein Punkt innerhalb einer geometrischen Figur?  (oder außerhalb)
+
 
 module Say =
     let hello name =
