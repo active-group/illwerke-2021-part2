@@ -169,6 +169,8 @@ module Code =
         match list with
         | [] -> acc 
         // Kontext: LOCH
+        // tail call
+        // endrekursiver Aufruf
         | (first::rest) -> rev1 rest (first::acc)
       rev1 list0 []
 
