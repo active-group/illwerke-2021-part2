@@ -148,7 +148,7 @@ module Code =
     | [] -> 0
     | (first::rest) -> first + listSum rest
 
-  let rec appendToEnd (list: list<'a>, element: 'a): list<'a> =
+  let rec appendToEnd (list: list<'a>) (element: 'a): list<'a> =
     match list with
     | [] -> [element]
     | (first::rest) -> first :: (appendToEnd rest element)
