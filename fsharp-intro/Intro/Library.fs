@@ -87,6 +87,7 @@ module Code =
         | Parrot (sentence, weight) -> 
             Parrot (sentence, weight + amount)
 
+  let tuplify (f: 'a -> 'b -> 'c): ('a * 'b) -> 'c
 
   // ('a -> 'b -> 'c) -> ('b -> 'a -> 'c)
   let flip f b a = f a b
