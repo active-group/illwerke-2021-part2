@@ -32,14 +32,16 @@ module Code =
 
   type Liveness = Dead | Alive
 
+  type Weight = double
+
   // Ein Tier ist eins der folgenden:
   // - Gürteltier
   // - Papagei
   // algebraischer Datentyp
   // discriminated union
   type Animal =
-    | Dillo of Liveness * double
-    | Parrot of string * double
+    | Dillo of Liveness * Weight
+    | Parrot of string * Weight
 
   // Gürteltier, lebendig, 10kg
   let dillo1 = Dillo (Alive, 10.0)
