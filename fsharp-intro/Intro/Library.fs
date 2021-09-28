@@ -77,6 +77,7 @@ module Code =
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
+  // Langschreibweise von feedAnimal
   let feedAnimal'' =
     fun (animal: Animal) ->
       fun (amount: Weight) ->
@@ -91,7 +92,7 @@ module Code =
   let flip f b a = f a b
 
   // fun = lambda
-  let flip' (f: 'a -> 'b -> 'c): ('b -> 'a -> 'c) =
+  let flip' (f: 'a -> 'b -> 'c): ('b -> ('a -> 'c)) =
     fun b -> fun a -> f a b
 
 
