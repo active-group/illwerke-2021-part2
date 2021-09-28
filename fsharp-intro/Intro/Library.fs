@@ -127,6 +127,15 @@ module Code =
   // 2. Funktion: Ist ein Punkt innerhalb einer geometrischen Figur?  (oder außerhalb)
 
 
+  // Eine Liste ist eins der folgenden:
+  // - leere Liste
+  // - Cons-Liste aus erstem Element und Rest-Liste
+  type List<'a> =
+  | Empty
+  | Cons of ('a * List<'a>)
+
+
+
 module Say =
     let hello name =
         printfn "Hello %s" name
