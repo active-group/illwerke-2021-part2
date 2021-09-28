@@ -101,7 +101,7 @@ module Code =
     fun (x, y) -> f x y
 
   // Haskell B. Curry
-  // Moses Schönfinkel
+  // Moses Schönfinkel -> "schönfinkeln"
   let curry (f: ('a * 'b) -> 'c): 'a -> 'b -> 'c =
     fun a -> fun b -> f (a, b)
 
