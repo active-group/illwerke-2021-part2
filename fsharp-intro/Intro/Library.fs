@@ -90,6 +90,9 @@ module Code =
   let tuplify (f: 'a -> 'b -> 'c): ('a * 'b) -> 'c =
     fun (a, b) -> (f a) b
 
+  let aTuplify (f: Animal -> Weight -> Animal): (Animal * Weight) -> Animal =
+    fun (animal, weight) -> f animal weight
+
   let untuplify (f: ('a * 'b) -> 'c): 'a -> 'b -> 'c =
     fun a -> fun b -> f (a, b)
 
