@@ -243,6 +243,7 @@ module Contracts =
 
   // Ich bekomme 100€ jetzt.
   let contract1 = Multiple (100.0, One EUR) 
+  let zcb1 = Later ("2021-12-24", Multiple (100.0, One EUR))
 
   // Multiple 1.0 EUR = One EUR
 
