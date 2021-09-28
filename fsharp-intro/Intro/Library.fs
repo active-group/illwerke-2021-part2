@@ -30,11 +30,13 @@ module Code =
   let msm' ({ Hour = h; Minute = m}): int =
     h * 60 + m
 
+  type Liveness = Dead | Alive
+
   // Ein Tier ist eins der folgenden:
   // - Gürteltier
   // - Papagei
   type Animal =
-    | Dillo
+    | Dillo of Liveness
     | Parrot
 
 
