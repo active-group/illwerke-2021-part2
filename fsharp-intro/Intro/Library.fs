@@ -19,6 +19,10 @@ module Code =
   let time1 = { Hour = 12; Minute = 24 }
   let time2 = { Hour = 5; Minute = 37}
 
+  // Minuten seit Mitternacht
+  let msm (time: Time): int =
+    time.Hour * 60 + time.Minute
+
 module Say =
     let hello name =
         printfn "Hello %s" name
