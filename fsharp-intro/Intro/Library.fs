@@ -247,11 +247,12 @@ module Contracts =
   | One of Currency
   | Multiple of double * Contract
   | Later of Date * Contract
-  | Direction of Direction * Contract
+  // | Direction of Direction * Contract
+  | Reverse of Contract // Direction (Short, ...)
 
 
   // Was ist denn das hier:
-  let c''' = Direction (Long, Direction (Short, Direction (Short, One EUR )))
+  // let c''' = Direction (Short, Direction (Short, One EUR ))
 
   // Ich bekomme 100€ jetzt.
   let contract1 = Multiple (100.0, One EUR) 
