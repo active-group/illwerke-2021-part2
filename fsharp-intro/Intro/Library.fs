@@ -151,7 +151,7 @@ module Code =
   let rec appendToEnd (list: list<'a>, element: 'a): list<'a> =
     match list with
     | [] -> [element]
-    | (first::rest) -> first :: appendToEnd rest element
+    | (first::rest) -> first :: (appendToEnd rest element)
 
   let rev (list: list<'a>): list<'a> =
     match list with
