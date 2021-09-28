@@ -217,17 +217,37 @@ module Code =
         then Some first
         else find pred rest
 
-module Contracts =
-  // 1. einfaches Beispiel erfragen
-  // Zero-Coupon Bond / deutsch: Zero-Bond
-  // "Ich bekomme am 24.12.2021 100€"
-  type Contract =
-  | ZeroCouponBond of ()
-
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
   // appendToEnd: 1 rekursiver Aufruf pro Cons / pro Listenelement
   // Liste mit Länger: Anzahl der Aufrufe = n + (n-1) + (n-2) + ... + 2 + 1
   // = (n+1)n/2 = (n^2 + n) / 2 = O(n^2)
+
+module Contracts =
+  // 1. einfaches Beispiel erfragen
+  // Zero-Coupon Bond / deutsch: Zero-Bond
+  // "Ich bekomme am 24.12.2021 100€"
+  // 2. in "atomare Bestandteile" zerlegen
+  // - "Währung": Ich bekomme jetzt 1€
+  // - "Viele": Ich bekomme jetzt 100€
+  // - "Später"
+
+  type Date = string // "2021-12-24"
+
+  type Currency = EUR | GBP | CHF
+
+  type Contract =
+  | One of Currency
+
+  (*
+  // Fehlversuch:
+  type Contract =
+  | ZeroCouponBond of Date * double * Currency
+  | Future
+  | CurrencySwap
+  | Everest
+  | K2
+  *)
+
 module Say =
     let hello name =
         printfn "Hello %s" name
