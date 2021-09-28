@@ -57,6 +57,14 @@ module Code =
     | Dillo (_, w) -> Dillo (Dead, w)
     | Parrot (_, weight) -> Parrot ("", weight)
 
+  let feedAnimal (animal: Animal) (amount: Weight): Animal =
+    match animal with
+    | Dillo (liveness, weight) ->
+        Dillo (liveness, weight + amount)
+    | Parrot (sentence, weight) -> 
+        Parrot (sentence, weight + amount)
+
+
 module Say =
     let hello name =
         printfn "Hello %s" name
