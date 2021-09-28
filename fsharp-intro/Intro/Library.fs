@@ -11,7 +11,7 @@ module Code =
     | Cat -> true
     | Snake -> false 
 
-  let isCute =
+  let isCute' =
    fun (pet: Pet) ->
       match pet with
       | Dog -> true
@@ -76,6 +76,16 @@ module Code =
     | Dillo (Dead, _) -> animal
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
+
+  let feedAnimal'' =
+    fun (animal: Animal) ->
+      fun (amount: Weight) ->
+        match animal with
+        | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
+        | Dillo (Dead, _) -> animal
+        | Parrot (sentence, weight) -> 
+            Parrot (sentence, weight + amount)
+
 
   // ('a -> 'b -> 'c) -> ('b -> 'a -> 'c)
   let flip f b a = f a b
