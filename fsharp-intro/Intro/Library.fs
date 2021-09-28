@@ -158,7 +158,7 @@ module Code =
     | [] -> [] 
     | (first::rest) -> appendToEnd (rev rest) first
 
-  let rev1 (list: list<'a>) (acc: list<'a>): list<'a> =
+  let rec rev1 (list: list<'a>) (acc: list<'a>): list<'a> =
     match list with
     | [] -> acc 
     | (first::rest) -> rev1 rest (first::acc)
