@@ -149,6 +149,8 @@ module Code =
     // Kontext des rekursiven Aufrufs: first + LOCH
     | (first::rest) -> first + listSum rest
 
+  let rec 
+
   let rec appendToEnd (list: list<'a>) (element: 'a): list<'a> =
     match list with
     | [] -> [element]
