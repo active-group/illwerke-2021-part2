@@ -230,6 +230,7 @@ module Contracts =
   // - "Währung": Ich bekomme jetzt 1€
   // - "Viele": Ich bekomme jetzt 100€
   // - "Später"
+  // 3. dabei nach Selbstreferenzen suchen
 
   type Date = string // "2021-12-24"
 
@@ -238,6 +239,8 @@ module Contracts =
   type Contract =
   | One of Currency
   | Multiple of double * Contract
+
+  let contract1 = Multiple (100.0, One EUR)
 
   // Multiple 1.0 EUR = One EUR
 
