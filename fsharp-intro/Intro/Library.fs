@@ -148,6 +148,10 @@ module Code =
     | [] -> 0
     | (first::rest) -> first + listSum rest
 
+  let rev (list: list<'a>): list<'a> =
+    match list with
+    | [] -> 
+    | (first::rest) -> first ... rev rest
 
 module Say =
     let hello name =
