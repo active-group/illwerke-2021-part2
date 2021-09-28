@@ -218,7 +218,11 @@ module Code =
         else find pred rest
 
 module Contracts =
-  
+  // 1. einfaches Beispiel erfragen
+  // Zero-Coupon Bond / deutsch: Zero-Bond
+  // "Ich bekomme am 24.12.2021 100€"
+  type Contract =
+  | ZeroCouponBond of ()
 
   // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
   // appendToEnd: 1 rekursiver Aufruf pro Cons / pro Listenelement
