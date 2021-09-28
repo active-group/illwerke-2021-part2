@@ -244,12 +244,25 @@ module Contracts =
   type Direction = Long | Short
 
   type Contract =
+  | Zero
   | One of Currency
   | Multiple of double * Contract
   | Later of Date * Contract
   // | Direction of Direction * Contract
   | Reverse of Contract // Direction (Short, ...)
+  | Union of Contract * Contract  //  <--- sollte man immer suchen
 
+  // Algebra ... Gruppe ...
+  // Menge / Typ T
+  // val op : (T * T) -> T
+  // Assoziativgesetz:
+  // op (x, op (y, z)) = op (op (x, y), z)
+  // x + (y + z) = (x + y) + z
+  // Halbgruppe
+
+  // Kommuntativgesetz:
+  // x + y = y + x
+  // Halbgruppe + neutrales Element = Monoid
 
   // Was ist denn das hier:
   // let c''' = Direction (Short, Direction (Short, One EUR ))
