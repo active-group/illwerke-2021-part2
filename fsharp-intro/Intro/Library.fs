@@ -286,6 +286,18 @@ module Contracts =
             
   // Multiple 1.0 EUR = One EUR
 
+  // operationelle Semantik
+
+  type Payment = Payment of Direction * Date * double * Currency
+
+  // aktueller Zustand: 
+  // - getätigte Zahlungen
+  // - Residualvertrag
+
+  // alle Zahlungen bis heute (today) + Residualvertrag
+  let calcPayments (contract: Contract) (today: Date): list<Payment> * Contract =
+
+
   (*
   // Fehlversuch:
   type Contract =
