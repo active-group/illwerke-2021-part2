@@ -11,6 +11,14 @@ module Code =
     | Cat -> true
     | Snake -> false 
 
+   let isCute =
+     fun (pet: Pet) ->
+        match pet with
+        | Dog -> true
+        | Cat -> true
+        | Snake -> false 
+
+
   // zusammengesetzte Daten
   // type Time = { Hour: int; Minute: int }
   type Time = { Hour: int 
