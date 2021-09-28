@@ -245,6 +245,12 @@ module Contracts =
   let contract1 = Multiple (100.0, One EUR) 
   let zcb1 = Later ("2021-12-24", Multiple (100.0, One EUR))
 
+  let zeroCouponBond (date: Date) (amount: double) (currency: Currency): Contract =
+     Later (date, Multiple (amount, One currency))
+
+
+  let zcb1' = zeroCouponBond "2021-12-24" 100.0 EUR
+
   // Multiple 1.0 EUR = One EUR
 
   (*
