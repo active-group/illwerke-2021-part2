@@ -95,7 +95,6 @@ module Code =
   let flip' (f: 'a -> 'b -> 'c): ('b -> ('a -> 'c)) =
     fun b -> fun a -> f a b
 
-
   let feedAnimal' (amount: Weight, animal: Animal): Animal =
     match animal with
     | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
