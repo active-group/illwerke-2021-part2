@@ -280,6 +280,10 @@ module Contracts =
   let cs1 = Union (zeroCouponBond "2021-12-24" 100.0 EUR,
                    Reverse (zeroCouponBond "2021-12-24" 80.0 GBP))
 
+  let currencySwap (date: Date) (amount1: double) (currency1: Currency) (amount2: double) (currency2: Currency) =
+     Union (zeroCouponBond date amount1 currency1,
+            Reverse (zeroCouponBond date amount2 currency2))
+            
   // Multiple 1.0 EUR = One EUR
 
   (*
