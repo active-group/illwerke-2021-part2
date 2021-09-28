@@ -36,10 +36,16 @@ module Code =
   // - Gürteltier
   // - Papagei
   type Animal =
-    | Dillo of Liveness
-    | Parrot
+    | Dillo of Liveness * double
+    | Parrot of string * double
 
+  // Gürteltier, lebendig, 10kg
+  let dillo1 = Dillo (Alive, 10.0)
+  // totes Gürteltier, 9kg
+  let dillo2 = Dillo (Dead, 9.0)
 
+  let parrot1 = Parrot ("Hello!", 1.0)
+  let parrot2 = Parrot ("Goodbye!", 1.5)
   
 
 module Say =
