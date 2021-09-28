@@ -210,7 +210,7 @@ module Code =
 
    let rec find (pred: 'a -> bool) (list: list<'a>): 'a =
      match list with
-     | [] ->
+     | [] -> failwith "element not found"
      | (first::rest) ->
         if pred first
         then first
