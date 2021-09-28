@@ -63,7 +63,7 @@ module Code =
 //        match liveness with
 //        | Dead -> animal
 //        | Alive -> Dillo (liveness, weight + amount)
-    | Dillo (Alive, weight) -> Dillo (Aliive, weight + amount)
+    | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
