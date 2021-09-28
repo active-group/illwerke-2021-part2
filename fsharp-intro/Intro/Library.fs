@@ -277,8 +277,8 @@ module Contracts =
 
   let zcb1' = zeroCouponBond "2021-12-24" 100.0 EUR
 
-  let cs1 = Union (zeroCouponBond "2021-12-24" 100.0 EUR)
-                  (Reverse (zeroCouponBond "2021-12-24" 80.0 GBP))
+  let cs1 = Union (zeroCouponBond "2021-12-24" 100.0 EUR,
+                   Reverse (zeroCouponBond "2021-12-24" 80.0 GBP))
 
   // Multiple 1.0 EUR = One EUR
 
