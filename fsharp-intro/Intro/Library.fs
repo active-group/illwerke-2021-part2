@@ -158,6 +158,16 @@ module Code =
     | [] -> [] 
     | (first::rest) -> appendToEnd (rev rest) first
 
+  let rev1 (list: list<'a>) (acc: list<'a>): list<'a> =
+    match list with
+    | [] -> acc 
+    | (first::rest) -> rev1 rest (first::acc)
+
+
+  // rev: 1 rekursiver Aufruf pro Cons -> pro Listenelement
+  // appendToEnd: 1 rekursiver Aufruf pro Cons / pro Listenelement
+  // Liste mit Länger: Anzahl der Aufrufe = n + (n-1) + (n-2) + ... + 2 + 1
+  // = (n+1)n/2 = (n^2 + n) / 2 = O(n^2)
 module Say =
     let hello name =
         printfn "Hello %s" name
