@@ -138,7 +138,7 @@ module Code =
   // - leere Liste: []
   // - Cons: ::, Infix
 
-  let list3 = 1 :: 2 :: 3 :: []
+  let list3: list<int> = 1 :: 2 :: 3 :: []
   let list3' = [1; 2; 3]
 
 
