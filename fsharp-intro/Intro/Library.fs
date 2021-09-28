@@ -57,13 +57,20 @@ module Code =
     | Dillo (_, w) -> Dillo (Dead, w)
     | Parrot (_, weight) -> Parrot ("", weight)
 
-  // Animal -> (Weight -> Animal)
-  let feedAnimal (animal: Animal) (amount: Weight): Animal =
+  // Weight -> (Animal -> Animal)
+  let feedAnimal  (amount: Weight) (animal: Animal): Animal =
     match animal with
 //    | Dillo (liveness, weight) ->
 //        match liveness with
 //        | Dead -> animal
 //        | Alive -> Dillo (liveness, weight + amount)
+    | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
+    | Dillo (Dead, _) -> animal
+    | Parrot (sentence, weight) -> 
+        Parrot (sentence, weight + amount)
+
+  let feedAnimal'  (amount: Weight, animal: Animal): Animal =
+    match animal with
     | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
     | Dillo (Dead, _) -> animal
     | Parrot (sentence, weight) -> 
