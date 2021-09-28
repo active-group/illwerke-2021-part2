@@ -87,13 +87,22 @@ module Code =
         | Parrot (sentence, weight) -> 
             Parrot (sentence, weight + amount)
 
-  let tuplify (f: 'a -> 'b -> 'c): ('a * 'b) -> 'c =
+  // Typinferenzalgorithmus: Hindley-Milner-Algorithmus
+  // Hindley-Milner-Damas-Algorithmus
+  let uncurry (f: 'a -> 'b -> 'c): ('a * 'b) -> 'c =
     fun (a, b) -> (f a) b
 
   let aTuplify (f: Animal -> Weight -> Animal): (Animal * Weight) -> Animal =
-    fun (animal, weight) -> f animal weight
+    fun ((animal, weight): Animal * Weight) -> f animal weight
 
-  let untuplify (f: ('a * 'b) -> 'c): 'a -> 'b -> 'c =
+  let aTuplify' f =
+    // x hat den Typ 'a
+    // y hat den Typ 'b
+    fun (x, y) -> f x y
+
+  // Haskell B. Curry
+  // Moses Schönfinkel
+  let curry (f: ('a * 'b) -> 'c): 'a -> 'b -> 'c =
     fun a -> fun b -> f (a, b)
 
   // ('a -> 'b -> 'c) -> ('b -> 'a -> 'c)
