@@ -143,6 +143,10 @@ module Code =
   let list3: list<int> = 1 :: 2 :: 3 :: []
   let list3' = [1; 2; 3]
 
+  let listSum (list: list<int>): int =
+    match list with
+    | [] -> 0
+    | (first::rest) -> first + listSum rest
 
 
 module Say =
