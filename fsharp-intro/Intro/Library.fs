@@ -11,12 +11,12 @@ module Code =
     | Cat -> true
     | Snake -> false 
 
-   let isCute =
-     fun (pet: Pet) ->
-        match pet with
-        | Dog -> true
-        | Cat -> true
-        | Snake -> false 
+  let isCute =
+   fun (pet: Pet) ->
+      match pet with
+      | Dog -> true
+      | Cat -> true
+      | Snake -> false 
 
 
   // zusammengesetzte Daten
