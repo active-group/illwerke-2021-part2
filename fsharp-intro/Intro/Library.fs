@@ -237,6 +237,9 @@ module Contracts =
 
   type Contract =
   | One of Currency
+  | Multiple of double * Contract
+
+  // Multiple 1.0 EUR = One EUR
 
   (*
   // Fehlversuch:
