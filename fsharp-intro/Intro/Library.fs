@@ -202,7 +202,7 @@ module Code =
     match list with
     // alle Elemente schon gesehen:
     | [] -> acc
-    | (first :: rest) -> listFoldLeft rest (f first acc)  
+    | (first :: rest) -> listFoldLeft rest (f first acc) f
 
 
 
