@@ -161,12 +161,14 @@ module Code =
     // Kontext: appendToEnd LOCH first
     | (first::rest) -> appendToEnd (rev rest) first
 
-  // CLR: benutzt für Kontexte einen Stack
+  // CLR: benutzt für Kontexte einen Stack, nur nicht für leere
+  // (außer möglicherweise im Debug-Modus)
 
   let rev' (list0: list<'a>): list<'a> =
       let rec rev1 (list: list<'a>) (acc: list<'a>): list<'a> =
         match list with
         | [] -> acc 
+        // Kontext: LOCH
         | (first::rest) -> rev1 rest (first::acc)
       rev1 list0 []
 
