@@ -69,7 +69,7 @@ module Code =
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
-  let feedAnimal'  (amount: Weight, animal: Animal): Animal =
+  let feedAnimal' (amount: Weight, animal: Animal): Animal =
     match animal with
     | Dillo (Alive, weight) -> Dillo (Alive, weight + amount)
     | Dillo (Dead, _) -> animal
