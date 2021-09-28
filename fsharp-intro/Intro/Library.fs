@@ -59,10 +59,11 @@ module Code =
 
   let feedAnimal (animal: Animal) (amount: Weight): Animal =
     match animal with
-    | Dillo (liveness, weight) ->
-        match liveness with
-        | Dead -> animal
-        | Alive -> Dillo (liveness, weight + amount)
+//    | Dillo (liveness, weight) ->
+//        match liveness with
+//        | Dead -> animal
+//        | Alive -> Dillo (liveness, weight + amount)
+    | Dillo (Alive, weight) -> Dillo (Aliive, weight + amount)
     | Parrot (sentence, weight) -> 
         Parrot (sentence, weight + amount)
 
