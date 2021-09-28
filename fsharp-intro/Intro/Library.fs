@@ -149,7 +149,12 @@ module Code =
     // Kontext des rekursiven Aufrufs: first + LOCH
     | (first::rest) -> first + listSum rest
 
-  let rec 
+  // acc: Summe der bisher schon gesehenen Elemente
+  let rec listSum1 (list: list<int>) (acc: int): int =
+    match list with
+    // alle Elemente schon gesehen:
+    | [] -> acc
+    | (first :: rest) -> listSum1 rest (first + acc)  
 
   let rec appendToEnd (list: list<'a>) (element: 'a): list<'a> =
     match list with
