@@ -231,10 +231,17 @@ module Contracts =
   // - "Viele": Ich bekomme jetzt 100€
   // - "Später"
   // 3. dabei nach Selbstreferenzen suchen
+  // 4. weitere Beispiele
+  // Currency swap:
+  //    Am 24.12.2021 bekomme ich 100€ und bezahle 80GBP.
+  // bisher nur eine Zahlungsrichtung!
+  // Idee #1: Multiple mit negativem Betrag
 
   type Date = string // "2021-12-24"
 
   type Currency = EUR | GBP | CHF
+
+  type Direction = Long | Short
 
   type Contract =
   | One of Currency
