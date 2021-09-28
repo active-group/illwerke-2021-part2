@@ -164,8 +164,19 @@ module Code =
     // Kontext des rekursiven Aufrufs: first :: LOCH
     | (first::rest) -> first :: appendToEnd rest element
 
-  let listFold x f list =
-    
+  (*
+(define list-fold
+  (lambda (x f list)
+    (cond
+      ((empty? list) x)
+      ((cons? list)
+       (f (first list)
+          (list-fold x f (rest list)))))))
+  *)
+  let rec listFold x f list =
+    match list with
+    | [] -> x
+    | (first::rest) -> f first (listFold x f rest)
 
   let rec rev (list: list<'a>): list<'a> =
     match list with
