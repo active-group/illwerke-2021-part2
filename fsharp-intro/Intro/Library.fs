@@ -148,10 +148,15 @@ module Code =
     | [] -> 0
     | (first::rest) -> first + listSum rest
 
+  let rec appendToEnd (list: list<'a>, element: 'a): list<'a> =
+    match list with
+    | [] -> [element]
+    | (first::rest) -> first :: appendToEnd rest element
+
   let rev (list: list<'a>): list<'a> =
     match list with
-    | [] -> 
-    | (first::rest) -> first ... rev rest
+    | [] -> [] 
+    | (first::rest) -> appendToEnd (rev rest) first
 
 module Say =
     let hello name =
