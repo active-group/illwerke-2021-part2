@@ -51,6 +51,11 @@ module Code =
   let parrot1 = Parrot ("Hello!", 1.0)
   let parrot2 = Parrot ("Goodbye!", 1.5)
   
+  // Gürteltier überfahren
+  let runOverAnimal (animal: Animal): Animal =
+    match animal with
+    | Dillo (_, w) -> Dillo (Dead, w)
+    | Parrot (_, weight) -> Parrot ("", weight)
 
 module Say =
     let hello name =
