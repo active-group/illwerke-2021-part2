@@ -63,21 +63,42 @@ module Interop =
               printfn "%s" s
     }
 
-  // Generics können manchmal nützlich sein, z.B., um dünne F#-API
-  // auf C#-API zu setzen
-
   // TODO Besseres Beispiel
 
-  type IMyContainer<'a> =
-    abstract member Items: 'a list
-    abstract member Add: 'a -> unit
+  type IAnimal =
+    abstract member Alive: bool
+    abstract member RunOver: unit -> unit
 
-  open System.Collections.Generic
+  //type Dillo (weight: int) =
+  //  let mutable alive = true
 
-  type MyContainer<'a> (initialItems: list<'a>) =
-    let items: IEnumerable<'a> = seq initialItems
-    member _.Items = items |> Seq.toList
-    member _.AddItem item = () // TODO
+  //  member _.Weight = weight
+
+  //  interface IAnimal with
+  //    member _.Alive = alive
+  //    member _.RunOver () = alive <- false
+
+  // Wollen Dillo mit anderen Dillos vom Gewicht her
+  // vergleichen können.
+  type Dillo<'a when 'a : comparison> (weight: 'a) =
+    let mutable alive = true
+
+    member _.Weight = weight
+    member x.IsHeavierThan (other: Dillo<'a>) =
+      x.Weight > other.Weight
+
+    interface IAnimal with
+      member _.Alive = alive
+      member _.RunOver () = alive <- false
+
+  type Snake (thickness: int) =
+    let mutable thickness = thickness
+
+    member _.Thickness = thickness
+    
+    interface IAnimal with
+      member _.Alive = thickness > 0
+      member x.RunOver () = thickness <- 0
 
   let main () =
     // let foo = new MyClass ()
@@ -91,6 +112,16 @@ module Interop =
     // Beide Aufrufe möglich mit IScream
     (human :> IScream).MakeSound ()
     (human :> IScream).Scream ()
+    let dillo = Dillo 5
+    printfn "%A" (dillo :> IAnimal).Alive
+    (dillo :> IAnimal).RunOver ()
+    printfn "%A" (dillo :> IAnimal).Alive
+    let snake = Snake 3
+    printfn "%A" (snake :> IAnimal).Alive
+    (snake :> IAnimal).RunOver ()
+    printfn "%A" (snake :> IAnimal).Alive
+    printfn "%A" snake.Thickness
+    printfn "%A" ((Dillo 14).IsHeavierThan (Dillo 22))
     (createSoundMaker "hello there").MakeSound ()
 
   // TODO Klassen mit Generic?
