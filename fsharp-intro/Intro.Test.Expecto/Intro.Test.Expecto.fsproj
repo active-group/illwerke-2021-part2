@@ -9,15 +9,15 @@
 
   <ItemGroup>
     <Compile Include="Sample.fs" />
+    <Compile Include="CardsTest.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-
-  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="Expecto" Version="8.13.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
     <PackageReference Include="YoloDev.Expecto.TestSdk" Version="0.8.0" />
+    <ProjectReference Include="..\Intro\Intro.fsproj" />
     <PackageReference Update="FSharp.Core" Version="5.0.0" />
   </ItemGroup>
 </Project>
