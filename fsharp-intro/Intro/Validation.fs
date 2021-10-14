@@ -54,8 +54,9 @@ module Validation =
       | Errors errs, Fine _ -> Errors errs
       | Fine _, Errors errs -> Errors errs
       | Errors errs1, Errors errs2 -> errs1 @ errs2 |> Errors
+    member _.ReturnFrom x = x
     member _.Return a = Fine a
-    member _.Zero = Fine ()
+    //member _.Zero = Fine ()
 
   let validate = ValidateBuilder ()
 
@@ -71,7 +72,20 @@ module Validation =
       return request
     }
 
-  // Beispiel/Motivation für Combine TODO?
+  let validatePositiveInt (i: int) =
+    validate {
+      if i > 0
+        then return ()
+        else return! error "This is bad"
+    }
+
+  // FIXME
+  //let validateRequestAndPositiveInt request i =
+  //  validate {
+  //    // Erfordert Combine und Zero
+  //    return! validateRequest request
+  //    do! validatePositiveInt i
+  //  }
 
   let runExample () =
     let req = { Name = "johannes"; Email = "foobar" }
@@ -79,4 +93,8 @@ module Validation =
     | Fine _ -> printfn "all good"
     | Errors errs -> printfn "got some errors: %A" errs
 
-  // "Parse, don't validate" erwähnen
+  // Anmerkungen:
+  //
+  // - "Parse, don't validate" erwähnen
+  // - FSToolkit (https://github.com/demystifyfp/FsToolkit.ErrorHandling/) sieht ganz brauchbar aus
+  //   und ist nicht allzu groß. Rein für Validierung aber unnötig, etwas Externes heranzuziehen aus meiner Sicht

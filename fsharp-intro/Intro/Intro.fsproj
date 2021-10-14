@@ -19,6 +19,7 @@
     <Compile Include="Cards.fs" />
     <Compile Include="Decode.fs" />
     <Compile Include="Validation.fs" />
+    <Compile Include="ISeq.fs" />
     <Compile Include="Program.fs" />
     <None Include="Script1.fsx" />
   </ItemGroup>
