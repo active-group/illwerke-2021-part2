@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Tailcalls>true</Tailcalls>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +18,11 @@
     <Compile Include="Json.fs" />
     <Compile Include="Cards.fs" />
     <Compile Include="Decode.fs" />
+    <Compile Include="Validation.fs" />
+    <Compile Include="Program.fs" />
+    <None Include="Script1.fsx" />
   </ItemGroup>
+
+  <ItemGroup />
 
 </Project>
