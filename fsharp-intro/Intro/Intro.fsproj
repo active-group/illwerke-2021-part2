@@ -11,6 +11,7 @@
     <Compile Include="Maybe.fs" />
     <Compile Include="Json.fs" />
     <Compile Include="Cards.fs" />
+    <Compile Include="Decode.fs" />
   </ItemGroup>
 
 </Project>

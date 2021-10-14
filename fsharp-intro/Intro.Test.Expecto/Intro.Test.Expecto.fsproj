@@ -10,11 +10,13 @@
   <ItemGroup>
     <Compile Include="Sample.fs" />
     <Compile Include="CardsTest.fs" />
+    <Compile Include="DecodeTest.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Expecto" Version="8.13.2" />
+    <PackageReference Include="Expecto.FsCheck" Version="9.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
     <PackageReference Include="YoloDev.Expecto.TestSdk" Version="0.8.0" />
     <ProjectReference Include="..\Intro\Intro.fsproj" />
