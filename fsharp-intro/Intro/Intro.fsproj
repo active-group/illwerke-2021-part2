@@ -8,6 +8,7 @@
   <ItemGroup>
     <Compile Include="Library.fs" />
     <Compile Include="Interop.fs" />
+    <Compile Include="Maybe.fs" />
   </ItemGroup>
 
 </Project>
