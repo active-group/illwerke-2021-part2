@@ -21,6 +21,7 @@
     <Compile Include="Validation.fs" />
     <Compile Include="ISeq.fs" />
     <Compile Include="Foo.fs" />
+    <Compile Include="SIUnits.fs" />
     <Compile Include="Program.fs" />
     <None Include="Script1.fsx" />
   </ItemGroup>
