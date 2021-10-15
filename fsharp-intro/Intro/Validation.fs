@@ -57,6 +57,10 @@ module Validation =
     member _.ReturnFrom x = x
     member _.Return a = Fine a
     //member _.Zero = Fine ()
+    member _.Bind (valA, binder) =
+      match valA with
+      | Fine a -> binder a
+      | Errors errs -> Errors errs
 
   let validate = ValidateBuilder ()
 
@@ -72,12 +76,20 @@ module Validation =
       return request
     }
 
-  let validatePositiveInt (i: int) =
+  let validateRequestM request =
     validate {
-      if i > 0
-        then return ()
-        else return! error "This is bad"
+      let! name = validateName request
+      // Achtung: hier kein and!
+      let! email = validateEmail request
+      return request
     }
+
+  //let validatePositiveInt (i: int) =
+  //  validate {
+  //    if i > 0
+  //      then return ()
+  //      else return! error "This is bad"
+  //  }
 
   // FIXME
   //let validateRequestAndPositiveInt request i =
@@ -88,7 +100,11 @@ module Validation =
   //  }
 
   let runExample () =
-    let req = { Name = "johannes"; Email = "foobar" }
+    let req = { Name = ""; Email = null }
+    // Was nicht funktioniert: monadische Variante: Ausstieg beim ersten Fehler ->
+    // syntaktisch ähnliche CEs führen zu sehr verschiedenem Code ->
+    // wir empfehlen, Validierung selbst zu bauen und nur das Nötigste zu implementieren.
+    //match validateRequestM req with
     match validateRequest req with
     | Fine _ -> printfn "all good"
     | Errors errs -> printfn "got some errors: %A" errs
@@ -96,5 +112,10 @@ module Validation =
   // Anmerkungen:
   //
   // - "Parse, don't validate" erwähnen
-  // - FSToolkit (https://github.com/demystifyfp/FsToolkit.ErrorHandling/) sieht ganz brauchbar aus
-  //   und ist nicht allzu groß. Rein für Validierung aber unnötig, etwas Externes heranzuziehen aus meiner Sicht
+  // - FSToolkit (https://github.com/demystifyfp/FsToolkit.ErrorHandling/) hat eingebaute CE,
+  //   aber auch leider monadisches Bind. Das will man nicht, da ein let!-and!-Konstrukt nun applikativ
+  //   abläuft, ein (versehentliches) let!-let! aber auf Bind dispatcht und damit Fehler verwirft.
+  //
+  // Fazit: Lohnt sich aus unserer Sicht nicht, hier etwas Externes heranzuziehen, da leicht
+  // selbstgeschrieben (u.U. ist Implementierung als simpler Alias "type Validation<'a, 'err> = Result<'a, list<'err>>"
+  // noch etwas angenehmer).
