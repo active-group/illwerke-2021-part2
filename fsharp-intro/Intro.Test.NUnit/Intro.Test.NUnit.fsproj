@@ -16,8 +16,13 @@
 
   <ItemGroup>
     <Compile Include="UnitTest1.fs" />
+    <Compile Include="FsCheck.fs" />
+    <Compile Include="PBT.fs" />
     <Compile Include="Program.fs" />
+    <None Include="Script1.fsx" />
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <ProjectReference Include="..\Intro\Intro.fsproj" />
