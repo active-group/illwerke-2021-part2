@@ -42,7 +42,8 @@ module CardsTest =
 
   [<TestCaseSource(nameof suitToStringCases)>]
   let ``suitToString works`` (suit, str) =
-    suitToString suit |> shouldEqual str
+    let actual = suitToString suit
+    str |> shouldEqual actual
 
   let rankToStringCases = [
     TestCaseData(Seven, "7")
@@ -57,7 +58,8 @@ module CardsTest =
 
   [<TestCaseSource(nameof rankToStringCases)>]
   let ``rankToString works`` (rank, str) =
-    rankToString rank |> shouldEqual str
+    let actual = rankToString rank
+    str |> shouldEqual actual
 
   // Hier können wir nicht mehr gut alle Kombinationen hinschreiben
   [<Test>]
