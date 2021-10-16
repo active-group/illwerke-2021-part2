@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <Compile Include="UnitTest1.fs" />
+    <Compile Include="CardsTest.fs" />
+    <Compile Include="DecodeTest.fs" />
     <Compile Include="FsCheck.fs" />
     <Compile Include="PBT.fs" />
     <Compile Include="Program.fs" />

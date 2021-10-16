@@ -34,8 +34,8 @@ module DecodeTest =
   [<Tests>]
   let decodeSuitTests = testList "decodeSuit" [
     test "works for diamonds" {
-      let result = runDecoder DecodeCards.decodeSuit (Json.String "Kreuz")
-      Expect.equal result (Ok Cards.Clubs) ""
+      let result = runDecoder DecodeCards.decodeSuit (Json.String "Karo")
+      Expect.equal result (Ok Cards.Diamonds) ""
     }
   ]
 

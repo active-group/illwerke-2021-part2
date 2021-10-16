@@ -28,7 +28,7 @@ module Cards =
   // Serialisiere Farbe -> JSON
   let encodeSuit = Json.String << suitToString
 
-  // String-Repraesentation eines Kartenwert
+  // String-Repräsentation eines Kartenwerts
   let rankToString = function
     | Seven -> "7"
     | Eight -> "8"
