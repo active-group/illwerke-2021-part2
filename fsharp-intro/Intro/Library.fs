@@ -243,10 +243,22 @@ module Contracts =
 
   type Direction = Long | Short
 
+  //type Contract =
+  //| Zero  // neutrales Element
+  //| One of Currency
+  //| Multiple of double * Contract
+  //| Later of Date * Contract
+  //// | Direction of Direction * Contract
+  //| Reverse of Contract // Direction (Short, ...)
+  //| Union of Contract * Contract  //  <--- sollte man immer suchen
+
+  type Observable<'a> = 'a
+
   type Contract =
   | Zero  // neutrales Element
   | One of Currency
-  | Multiple of double * Contract
+  // Hier: nicht double, sondern überlegen lassen (Wert steht erst später fest)
+  | Multiple of Observable<double> * Contract
   | Later of Date * Contract
   // | Direction of Direction * Contract
   | Reverse of Contract // Direction (Short, ...)

@@ -72,11 +72,14 @@ module Tests =
 
   // Property tests
 
-  let doubleNegationIsIdentity (b: bool) =
-    not (not b) = b
-
   open FsCheck.NUnit
 
+  // ACHTUNG: findet den Test nicht!
+  //let bla (xs: list<bool>) = List.rev xs = xs
+
+  //[<Property>]
+  //let ``double negation is identity`` = bla
+
   [<Property>]
-  let ``double negation is identity`` =
-    doubleNegationIsIdentity
+  let ``double negation is identity`` (b: bool) =
+    not (not b) = b
