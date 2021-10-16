@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="Expecto.FsCheck" Version="9.0.4" />
-    <PackageReference Include="expecto.xunit" Version="0.2.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
     <ProjectReference Include="..\Intro\Intro.fsproj" />
     <PackageReference Update="FSharp.Core" Version="5.0.0" />
