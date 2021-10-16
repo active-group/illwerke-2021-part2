@@ -75,24 +75,37 @@ module ISet =
         union ((min x1 x2, y1)::xrest) yrest
 
   module Test =
-     open FsCheck
-     open FsCheck.Util
+    open FsCheck
+    open FsCheck.Util
 
-     let (.=.) left right = left = right |@ sprintf "%A = %A" left right
+    let (.=.) left right = left = right |@ sprintf "%A = %A" left right
 
-     let generatorValid =
-       Prop.forAll Arb.iset isValid
+    let generatorValid =
+      Prop.forAll Arb.iset isValid
 
-     let unionCorrect =
-       Prop.forAll (Arb.pair Arb.iset Arb.iset) (fun (s1, s2) ->
-         toList (union s1 s2)
-         .=.
-         merge2 (toList s1) (toList s2))
+    let unionCorrect =
+      Prop.forAll (Arb.pair Arb.iset Arb.iset) (fun (s1, s2) ->
+        toList (union s1 s2)
+        .=.
+        merge2 (toList s1) (toList s2))
 
-     let unionValid =
-       Prop.forAll (Arb.pair Arb.iset Arb.iset) (fun (s1, s2) ->
-         isValid (union s1 s2))
+    let unionValid =
+      Prop.forAll (Arb.pair Arb.iset Arb.iset) (fun (s1, s2) ->
+        isValid (union s1 s2))
 
+    open FsCheck.NUnit
+
+    [<Property>]
+    // Funktioniert nicht:
+    //let testUnionCorrect = unionCorrect
+    // Hinweis: So ist Registrierung des Arbitrary nicht nötig
+    let testUnionCorrect () = unionCorrect
+
+    [<Property>]
+    let testUnionValid () = unionValid
+
+    [<Property>]
+    let testGeneratorValid () = generatorValid
 
 (*
 "TDD" mit QuickCheck:
