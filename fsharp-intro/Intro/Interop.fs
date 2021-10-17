@@ -43,6 +43,8 @@ module Interop =
   //type Dillo (weight: int) =
   //  let mutable alive = true
 
+  // Weitere Konstruktoren mit 'new' moeglich, aber selten nuetzlich
+  //  new () = Dillo (5) // Default-Wert (weiter unten optionale Parameter)
   //  member _.Weight = weight
 
   //  interface IAnimal with
@@ -62,8 +64,58 @@ module Interop =
       member _.Alive = alive
       member _.RunOver () = alive <- false
 
+  // -> Constraints!
+  // Persoenlich selten verwendet ausser bei Interop mit Windows Forms,
+  // um auf bestimmte Parent-Typen einzugrenzen
+  // https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/generics/constraints
+
+  // Anmerkung: es gibt auch C#-Extensionmethoden via [<Extension>],
+  // aber selten noetig (idR nur dann, wenn man auf generischen Typen
+  // mit bestimmter Auspraegung etwas definieren will).
+
+  // Type-Extensions: Methoden ankleben (im gleichen File -> intrinsisch, sonst optional [nur bei open])
+  // Manchmal praktisch, zB fuer Hilfsfunktionen
+  type List<'a> with
+    // Statisch, nicht-statisch, Properties (aber nicht SRTPs)
+    static member cons x xs = x :: xs
   // Erst: ohne ?
   // Kurzform: optionaler Parameter
+
+  // SRTP (nuetzlich bzw. noetig z.B. bei inline-Operationen mit Constraints):
+  // Zur Kompilierzeit kann getypcheckt werden, ob bestimmte Operationen
+  // erlaubt sind (erkennbar am ^a statt 'a wie bei generischen Parametern):
+  // quasi Beispiel aus MSDN: Spezielle Addition (inline) auf ungleichen Typen.
+  // -> Zur Kompilierzeit muss gecheckt werden, ob der Operator fuer die Kombination
+  // aus Werten beim Aufruf exisiert.
+  // Beispiel: Wir wollen Strings zu Integern addieren (Laenge + Wert)
+  let inline add(v: ^a when (^a or ^b) : (static member (+|+): ^a * ^b -> ^a), w : ^b) =
+    v +|+ w
+
+  // Anmerkungen und Restriktionen:
+  // - Member-Constraints erinnern an Typklassen aus Haskell
+  // - Muessen inline definiert werden (unter der Haube wird verschiedener
+  //   Code fuer die Kombinationen generiert, und der passende wird zur Kompilierzeit
+  //   an der Aufrufstelle eingesetzt)
+  // - Muessen SRTPs benutzen; normale Generics gehen nicht
+  // - Muss kein Operator sein
+  // - Oft durch Interfaces ersetzbar mit besserer Lesbarkeit der Signaturen und Kontrakte
+  // - Inlining kann Performce-Boost bringen
+  // - Inline wurde eingefuehrt, um arithmetische Operationen auf generischen Zahlentypen
+  //   definieren zu koennen (sonst wird bei let add x y = x + y) immer ein bestimmter Typ
+  //   inferiert; durch Inlining wird dies uebersetzt in Constraint, der aussagt, dass es
+  //   eine bestimmte, spezifische Operation (+) geben muss, die "passt"
+
+  // Idee: Extension-Methode auf System.String:
+  //type System.String with
+    //static member (+|+) (s: string, i: int) = s.Length + i
+  // Aber Extension-Methoden duerfen keine solchen Operatoren definieren
+
+  // -> Wrapper-Typ
+  type MyString =
+    | MyString of System.String
+    static member (+|+) (MyString s, i: int) = s.Length + i
+    // Beispiel in main
+
   type Snake (?thickness: int) =
   //type Snake (thickness: int) =
     //let mutable thickness = thickness
@@ -101,18 +153,23 @@ module Interop =
       member x.RunOver () = alive <- false
       member x.Fly () = printfn "I'm flying!"
 
-  // Operatoren überladen: wollen Tupel addieren können, wenn Inhalt punktweise addiert werden kann
-  // Inferierter Typ: ints
-  //let addTups (a, b) (c, d) = (a + c, b + d)
-  type Tup (x, y) =
-    member _.First = x
-    member _.Second = y
-    override _.ToString () = sprintf "( %A, %A )" x y
-    static member (+) (tup1: Tup, tup2: Tup) =
-      Tup (tup1.First + tup2.First, tup1.First + tup2.Second)
+  // Abstrakte Basisklasse, von der geerbt werden kann: Attribut
+  [<AbstractClass>]
+  type MyBase (s: string) =
+    let name = s
+    abstract member Talk: unit -> unit
+    // Auch implementierte Member moeglich
+    member _.TalkToPeter () = printfn "Hi, Peter"
 
-  // Wenn man das tippt, sieht man, wie die Typinferenz für addTups greift
-  //addTups ("", 3) (4, "c")
+  // Delegates: ab und an hat C# (statt Action<T>, Func<S,T>, Predicate<T>) Delegates,
+  // die man bedienen muss.
+  type MyFunc = delegate of string -> int
+
+  let callMyFuncWithAbc (myFunc: MyFunc) = myFunc.Invoke "abc"
+  let callFWithAbc (myFuncAlt: System.Func<string, int>) = myFuncAlt.Invoke("abc")
+  // Auch nett: Invoke-Aufruf binden
+  let callMyFunc (myFunc: MyFunc) = myFunc.Invoke
+  let callMyFuncWithAbc' myFunc = callMyFunc myFunc "abc"
 
   let main () =
     // let foo = new MyClass ()
@@ -134,6 +191,7 @@ module Interop =
     printfn "%b" immortal.Alive
     immortal.RunOver ()
     printfn "%b" immortal.Alive
+    printfn "abcde +|+ 3 = %i" (MyString "abcde" +|+ 3)
     let result = Tup(2,3) + Tup(7,8)
     // Danach ToString
     printfn "Added tuples: %A" result
